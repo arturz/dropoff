@@ -16,11 +16,14 @@ const path_1 = __importDefault(require("path"));
 const getContent_1 = __importDefault(require("../utils/getContent"));
 const minifyJs_1 = __importDefault(require("../minifiers/minifyJs"));
 const withoutIEfix_1 = __importDefault(require("../utils/withoutIEfix"));
+const isUrl_1 = __importDefault(require("../utils/isUrl"));
 exports.default = (dom, baseDir) => __awaiter(void 0, void 0, void 0, function* () {
     const { window: { document } } = dom;
     const scripts = document.querySelectorAll('script[src][inline]');
     for (const script of scripts) {
         const src = withoutIEfix_1.default(script.getAttribute('src'));
+        if (isUrl_1.default(src))
+            continue;
         const filePath = path_1.default.isAbsolute(src)
             ? src
             : path_1.default.resolve(baseDir, src);

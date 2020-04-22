@@ -5,6 +5,7 @@ import minifyCss from '../minifiers/minifyCss'
 import updatePathsInStylesheet from './updatePathsInStylesheet'
 import withoutIEfix from '../utils/withoutIEfix'
 import Options from '../types/Options'
+import isUrl from '../utils/isUrl'
 
 export default async (dom: JSDOM, baseDir: string, options: Options) => {
   const { window: { document } } = dom
@@ -12,6 +13,9 @@ export default async (dom: JSDOM, baseDir: string, options: Options) => {
   const stylesheets = document.querySelectorAll('link[rel="stylesheet"][href][inline]')
   for(const stylesheet of stylesheets){
     const href = withoutIEfix(stylesheet.getAttribute('href') as string)
+    if(isUrl(href))
+      continue
+
     const filePath = path.isAbsolute(href)
       ? href
       : path.resolve(baseDir, href)

@@ -6,6 +6,7 @@ import getSize from '../utils/getSize'
 import Options from '../types/Options'
 import getContent from '../utils/getContent'
 import getMinifiedSvgInBase64 from '../utils/getMinifiedSvgInBase64'
+import isUrl from '../utils/isUrl'
 
 export default async (dom: JSDOM, baseDir: string, { maxInlinableFilesize }: Options) => {
   const { window: { document } } = dom
@@ -13,6 +14,9 @@ export default async (dom: JSDOM, baseDir: string, { maxInlinableFilesize }: Opt
   const images = document.querySelectorAll('img[src][inline]')
   for(const img of images){
     const src = withoutIEfix(img.getAttribute('src') as string)
+    if(isUrl(src))
+      continue
+
     const filePath = path.isAbsolute(src)
       ? src
       : path.resolve(baseDir, src)

@@ -18,11 +18,14 @@ const getContentInBase64_1 = __importDefault(require("../utils/getContentInBase6
 const getSize_1 = __importDefault(require("../utils/getSize"));
 const getContent_1 = __importDefault(require("../utils/getContent"));
 const getMinifiedSvgInBase64_1 = __importDefault(require("../utils/getMinifiedSvgInBase64"));
+const isUrl_1 = __importDefault(require("../utils/isUrl"));
 exports.default = (dom, baseDir, { maxInlinableFilesize }) => __awaiter(void 0, void 0, void 0, function* () {
     const { window: { document } } = dom;
     const images = document.querySelectorAll('img[src][inline]');
     for (const img of images) {
         const src = withoutIEfix_1.default(img.getAttribute('src'));
+        if (isUrl_1.default(src))
+            continue;
         const filePath = path_1.default.isAbsolute(src)
             ? src
             : path_1.default.resolve(baseDir, src);

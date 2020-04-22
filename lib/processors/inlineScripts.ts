@@ -3,6 +3,7 @@ import { JSDOM } from 'jsdom'
 import getContent from '../utils/getContent'
 import minifyJs from '../minifiers/minifyJs'
 import withoutIEfix from '../utils/withoutIEfix'
+import isUrl from '../utils/isUrl'
 
 export default async (dom: JSDOM, baseDir: string) => {
   const { window: { document } } = dom
@@ -10,6 +11,9 @@ export default async (dom: JSDOM, baseDir: string) => {
   const scripts = document.querySelectorAll('script[src][inline]')
   for(const script of scripts){
     const src = withoutIEfix(script.getAttribute('src') as string)
+    if(isUrl(src))
+      continue
+
     const filePath = path.isAbsolute(src)
       ? src
       : path.resolve(baseDir, src)

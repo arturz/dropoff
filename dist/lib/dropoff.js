@@ -44,7 +44,7 @@ exports.default = (entry, output, options = defaultOptions) => __awaiter(void 0,
     isCLI && console.log(`HTML minified!`);
     if (isCLI) {
         const outputPath = path_1.default.resolve(process.cwd(), output);
-        fs_1.promises.writeFile(outputPath, withMinifiedHtml);
+        yield fs_1.promises.writeFile(outputPath, withMinifiedHtml);
         console.log(`Done.`);
         console.log(`Output saved at "${outputPath}"`);
     }

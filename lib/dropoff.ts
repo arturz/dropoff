@@ -38,7 +38,7 @@ export default async (entry: string, output: string, options = defaultOptions) =
   
   if(isCLI){
     const outputPath = path.resolve(process.cwd(), output)
-    fs.writeFile(outputPath, withMinifiedHtml)
+    await fs.writeFile(outputPath, withMinifiedHtml)
 
     console.log(`Done.`)
     console.log(`Output saved at "${outputPath}"`)

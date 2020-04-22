@@ -17,11 +17,14 @@ const getContent_1 = __importDefault(require("../utils/getContent"));
 const minifyCss_1 = __importDefault(require("../minifiers/minifyCss"));
 const updatePathsInStylesheet_1 = __importDefault(require("./updatePathsInStylesheet"));
 const withoutIEfix_1 = __importDefault(require("../utils/withoutIEfix"));
+const isUrl_1 = __importDefault(require("../utils/isUrl"));
 exports.default = (dom, baseDir, options) => __awaiter(void 0, void 0, void 0, function* () {
     const { window: { document } } = dom;
     const stylesheets = document.querySelectorAll('link[rel="stylesheet"][href][inline]');
     for (const stylesheet of stylesheets) {
         const href = withoutIEfix_1.default(stylesheet.getAttribute('href'));
+        if (isUrl_1.default(href))
+            continue;
         const filePath = path_1.default.isAbsolute(href)
             ? href
             : path_1.default.resolve(baseDir, href);
