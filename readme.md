@@ -12,12 +12,12 @@
 Scripts, stylesheets and images must have ```inline``` property to be inlined:
 
 ```html
-<style src="..." inline />
-<link rel="stylesheet" href="..." inline>
-<img src="..." inline />  
+<style src="js/main.js" inline />
+<link rel="stylesheet" href="css/some-stylesheet.css" inline>
+<img src="pizza.png" inline />  
 ```
 
-All files have to be local resources, maximum file size that could be inlined is 8 KB (it can be changed with --max-size).
+All files have to be local resources, maximum file size that can be inlined is 8 KB (it can be changed with --max-size).
 
 ```url()``` in stylesheets are automatically inlined, **unless it's a font** property (there are usually many font extensions included for browser compatibility, so inlining all of them is pointless).
 
