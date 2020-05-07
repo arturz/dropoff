@@ -1,6 +1,6 @@
 {
   "name": "dropoff",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
@@ -14,9 +14,16 @@
     "build": "tsc"
   },
   "author": "arturz",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturz/dropoff.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arturz/dropoff/issues"
+  },
+  "homepage":"https://github.com/arturz/dropoff",
   "keywords": ["inline", "inliner", "minify", "minifier", "html", "base64", "js", "css", "svg"],
-  "description": "Inlines and minifies JS, CSS and images",
+  "description": "Packes and losslessly compresses all of scripts, stylesheets and images into one HTML file.",
   "engines": {
     "node": ">=10.20.1"
   },
