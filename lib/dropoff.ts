@@ -8,12 +8,7 @@ import getContent from './utils/getContent'
 import inlineImages from './processors/inlineImages'
 import Options from './types/Options'
 
-const defaultOptions: Options = {
-  isCLI: false,
-  maxInlinableFilesize: 8
-}
-
-export default async (entry: string, output: string, options = defaultOptions) => {
+export default async (entry: string, output: string, options: Options) => {
   const entryPath = path.resolve(process.cwd(), entry)
   const baseDir = path.dirname(entryPath)
 
