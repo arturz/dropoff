@@ -60,6 +60,12 @@ import dropoff from 'dropoff'
 
 await dropoff('index.html', 'dest.html', { maxSize: 10 })
 ```
+If you don't want to save .html set the second argument to ```null``` or leave it undefined:
+```javascript
+const minifiedHtml = await dropoff('index.html', null, { maxSize: 10 })
+//or
+const minifiedHtml = await dropoff('index.html')
+```
 
 TypeScript is supported by default.
 

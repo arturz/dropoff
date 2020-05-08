@@ -30,13 +30,15 @@ export default async (entry: string, output: string, options: Options) => {
   isCLI && console.log(`Images inlined, SVG minified!`)
   const withMinifiedHtml = await minifyHtml(withInlinedImages.serialize())
   isCLI && console.log(`HTML minified!`)
-  
-  if(isCLI){
+
+  if(output !== ''){
     const outputPath = path.resolve(process.cwd(), output)
     await fs.writeFile(outputPath, withMinifiedHtml)
 
-    console.log(`Done.`)
-    console.log(`Output saved at "${outputPath}"`)
+    if(isCLI){
+      console.log(`Done.`)
+      console.log(`Output saved at "${outputPath}"`)
+    }
   }
 
   return withMinifiedHtml
