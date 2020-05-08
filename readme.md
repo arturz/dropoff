@@ -69,9 +69,12 @@ const minifiedHtml = await dropoff('index.html')
 
 TypeScript is supported by default.
 
-## Acknowledgements to
+## Acknowledgements
 - Jason Yu
  for idea of asynchronous [String.prototype.replace](https://dev.to/ycmjason/stringprototypereplace-asynchronously-28k9)
+- [node-minify](https://github.com/srod/node-minify) contributors
+- [svgo](https://github.com/svg/svgo) team for tool that optimizes SVG
+- [esm](https://github.com/standard-things/esm), [jsdom](https://github.com/jsdom/jsdom), [meow](https://github.com/sindresorhus/meow) CLI helper, [mime](https://github.com/broofa/mime), [url-regex](https://github.com/kevva/url-regex)
 
 ## License
 MIT
